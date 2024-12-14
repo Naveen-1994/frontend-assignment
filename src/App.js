@@ -7,7 +7,7 @@ import Footer from './components/Footer';
 
 
 function App() {
-  const { isSuccess, data, isError, error, isPending } = useQuery({
+  const { data, isError, error, isPending } = useQuery({
     queryKey: ["get funds data"],
     queryFn: getFundsData,
     enabled: true

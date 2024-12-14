@@ -84,14 +84,15 @@ th {
 #disabled {
     background-color: #cdcdcd;
     color: #00263a;
-    border: none;
+    border: 1.6px solid #cdcdcd;
 }
 
 .button-block {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     gap: 16px;
     margin: 16px 0;
+    align-items: center;
 }
 
 .table-cta {

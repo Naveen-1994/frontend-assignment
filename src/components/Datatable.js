@@ -5,17 +5,6 @@ const Datatable = ({ fundData }) => {
     const [tableData, setTableData] = useState(fundData.slice(0, 5));
     const [pageNumber, setPageNumber] = useState(1);
 
-    // 1 0, 5
-    // 2 5, 10
-    // 3 10, 15
-
-    // 94 95
-
-    /* length: 14 
-    divident: 2, reminder: 4
-    last index 15
-    */
-
     const handleNextClick = (pageCount) => {
         let firstIndex = pageNumber * 5;
         let lastIndex = (pageNumber + 1) * 5;
@@ -49,7 +38,7 @@ const Datatable = ({ fundData }) => {
                         {
                             tableData.map((fund) => {
                                 return (
-                                    <tr key={fund["s.no"]}>
+                                    <tr data-testid="tableDataRow" key={fund["s.no"]}>
                                         <td className="table-cell-content">{fund["s.no"]}</td>
                                         <td className="table-cell-content">{fund["amt.pledged"]}</td>
                                         <td className="table-cell-content">{fund["percentage.funded"]}</td>
@@ -62,11 +51,14 @@ const Datatable = ({ fundData }) => {
                 <div className="button-block">
                     <button
                         className="prev-button table-cta"
+                        data-testid="prevBtn"
                         id={tableData[0]["s.no"] === fundData[0]["s.no"] ? `disabled` : ""}
                         disabled={tableData[0]["s.no"] === fundData[0]["s.no"] ? true : false}
                         onClick={handlePrevClick}>prev</button>
+                    <p className="page-number">{pageNumber + "/" + Math.ceil(fundData.length / 5)}</p>
                     <button
                         className="next-button table-cta"
+                        data-testid="nextBtn"
                         id={tableData[tableData.length - 1]["s.no"] === fundData[fundData.length - 1]["s.no"] ? `disabled` : ""}
                         disabled={tableData[tableData.length - 1]["s.no"] === fundData[fundData.length - 1]["s.no"] ? true : false}
                         onClick={handleNextClick}>next</button>
